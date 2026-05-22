@@ -8,8 +8,8 @@ Draw in the air over a live webcam feed using OpenCV and MediaPipe hand tracking
 - Mirrors the camera feed for natural movement.
 - Draws a blue stroke when only the index finger is raised.
 - Pauses drawing when the index and middle fingers are raised.
-- Press `c` to clear the canvas.
-- Press `q` to quit safely.
+- Includes brush and eraser modes.
+- Supports color swatches, brush sizing, undo, redo, clear, camera switch, and PNG export/share.
 - Includes a phone-friendly installable web app.
 
 ## Phone App
@@ -24,6 +24,8 @@ The mobile app is the static PWA in `index.html`.
 
 On iPhone, use Safari and choose `Share` > `Add to Home Screen`.
 On Android, use Chrome and choose `Install app` or `Add to Home screen`.
+
+The web app uses MediaPipe Hands in the browser. Raise only your index finger to draw, raise index and middle together to hover, and use the toolbar for brush, eraser, color, size, history, camera switch, and export.
 
 ## Python Desktop Setup
 
