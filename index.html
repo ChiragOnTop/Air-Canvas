@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#101820">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Air Canvas">
+    <title>Air Canvas</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <video id="camera" class="camera-feed" playsinline muted></video>
+      <canvas id="stage" class="stage"></canvas>
+
+      <header class="top-bar">
+        <div>
+          <p class="label">Mode</p>
+          <p id="modeText" class="mode">Ready</p>
+        </div>
+        <div class="actions">
+          <button id="clearButton" class="icon-button" type="button" aria-label="Clear canvas" title="Clear">
+            <span aria-hidden="true">Clear</span>
+          </button>
+          <button id="startButton" class="primary-button" type="button">Start</button>
+        </div>
+      </header>
+
+      <footer class="bottom-bar">
+        <div class="swatch" aria-hidden="true"></div>
+        <span>Index draws. Two fingers hover.</span>
+      </footer>
+    </main>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("service-worker.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
