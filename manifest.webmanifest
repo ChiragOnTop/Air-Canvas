@@ -1,13 +1,13 @@
 {
   "name": "Air Canvas",
   "short_name": "Air Canvas",
-  "description": "Draw in the air with your phone camera.",
+  "description": "Draw, erase, save, and share air sketches with your phone camera.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#101820",
-  "theme_color": "#101820",
+  "background_color": "#151616",
+  "theme_color": "#151616",
   "icons": [
     {
       "src": "icons/icon.svg",
