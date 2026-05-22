@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#101820">
+    <meta name="theme-color" content="#151616">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Air Canvas">
     <title>Air Canvas</title>
@@ -11,6 +11,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
     <script defer src="app.js"></script>
   </head>
   <body>
@@ -19,22 +20,62 @@
       <canvas id="stage" class="stage"></canvas>
 
       <header class="top-bar">
-        <div>
-          <p class="label">Mode</p>
-          <p id="modeText" class="mode">Ready</p>
+        <div class="status-cluster">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <p class="app-title">Air Canvas</p>
+            <p id="modeText" class="mode">Ready</p>
+          </div>
         </div>
-        <div class="actions">
-          <button id="clearButton" class="icon-button" type="button" aria-label="Clear canvas" title="Clear">
-            <span aria-hidden="true">Clear</span>
-          </button>
+        <div class="status-cluster compact">
+          <span id="strokeCounter" class="stat">0</span>
+          <span id="fpsCounter" class="stat">0 fps</span>
           <button id="startButton" class="primary-button" type="button">Start</button>
         </div>
       </header>
 
-      <footer class="bottom-bar">
-        <div class="swatch" aria-hidden="true"></div>
-        <span>Index draws. Two fingers hover.</span>
-      </footer>
+      <section class="tool-panel" aria-label="Canvas tools">
+        <div class="tool-group">
+          <button class="tool-button is-active" type="button" data-tool="brush" aria-label="Brush" title="Brush">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button class="tool-button" type="button" data-tool="eraser" aria-label="Eraser" title="Eraser">
+            <i data-lucide="eraser"></i>
+          </button>
+        </div>
+
+        <div class="color-strip" aria-label="Brush colors">
+          <button class="swatch-button is-active" type="button" data-color="#1976ff" aria-label="Blue"></button>
+          <button class="swatch-button" type="button" data-color="#42d392" aria-label="Green"></button>
+          <button class="swatch-button" type="button" data-color="#ff5c5c" aria-label="Red"></button>
+          <button class="swatch-button" type="button" data-color="#ffd166" aria-label="Yellow"></button>
+          <button class="swatch-button" type="button" data-color="#f7f7f2" aria-label="White"></button>
+        </div>
+
+        <label class="size-control" aria-label="Brush size">
+          <i data-lucide="circle-dot"></i>
+          <input id="brushSize" type="range" min="4" max="44" value="12">
+          <span id="brushSizeValue">12</span>
+        </label>
+
+        <div class="tool-group">
+          <button id="undoButton" class="tool-button" type="button" aria-label="Undo" title="Undo" disabled>
+            <i data-lucide="undo-2"></i>
+          </button>
+          <button id="redoButton" class="tool-button" type="button" aria-label="Redo" title="Redo" disabled>
+            <i data-lucide="redo-2"></i>
+          </button>
+          <button id="saveButton" class="tool-button" type="button" aria-label="Save image" title="Save">
+            <i data-lucide="download"></i>
+          </button>
+          <button id="cameraButton" class="tool-button" type="button" aria-label="Switch camera" title="Switch camera">
+            <i data-lucide="switch-camera"></i>
+          </button>
+          <button id="clearButton" class="tool-button danger" type="button" aria-label="Clear canvas" title="Clear">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </div>
+      </section>
     </main>
 
     <script>
