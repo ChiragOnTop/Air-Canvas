@@ -1,0 +1,167 @@
+:root {
+  color-scheme: dark;
+  --bg: #101820;
+  --ink: #f6f7f9;
+  --muted: #bac4ce;
+  --panel: rgba(16, 24, 32, 0.78);
+  --panel-strong: rgba(16, 24, 32, 0.92);
+  --line: rgba(255, 255, 255, 0.18);
+  --blue: #1976ff;
+  --green: #42d392;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  touch-action: manipulation;
+}
+
+.app-shell {
+  position: fixed;
+  inset: 0;
+  min-height: 100dvh;
+  background: #101820;
+}
+
+.camera-feed {
+  display: none;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #101820;
+}
+
+.top-bar,
+.bottom-bar {
+  position: absolute;
+  left: max(14px, env(safe-area-inset-left));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.top-bar {
+  top: max(14px, env(safe-area-inset-top));
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.bottom-bar {
+  bottom: max(14px, env(safe-area-inset-bottom));
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.label,
+.mode {
+  margin: 0;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mode {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.icon-button,
+.primary-button {
+  min-height: 42px;
+  border-radius: 8px;
+  padding: 0 14px;
+  font-weight: 700;
+}
+
+.icon-button {
+  background: rgba(255, 255, 255, 0.11);
+}
+
+.primary-button {
+  min-width: 86px;
+  background: var(--blue);
+}
+
+.primary-button.is-running {
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(25, 118, 255, 0.22);
+}
+
+@media (max-width: 380px) {
+  .top-bar {
+    min-height: 58px;
+    padding: 8px 10px;
+  }
+
+  .mode {
+    font-size: 16px;
+  }
+
+  .icon-button,
+  .primary-button {
+    min-height: 38px;
+    padding: 0 11px;
+  }
+
+  .bottom-bar {
+    font-size: 13px;
+  }
+}
